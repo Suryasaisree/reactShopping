@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
 const Signup = () => {
-  const [name, setName] = useState('');        // New: Username state
+  const [name, setName] = useState('');        
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Signup = () => {
   const handleGoogleSignup = async () => {
     try {
       await signInWithPopup(auth, provider);
-      navigate('/'); // Direct to home after Google signup/login
+      navigate('/'); // Redirect to home after Google signup
     } catch (err) {
       alert(err.message);
     }
@@ -52,34 +52,31 @@ const Signup = () => {
           onChange={e => setEmail(e.target.value)}
         />
         <input
-  type="password"
-  placeholder="Password"
-  required
-  value={password}
-  onChange={e => setPassword(e.target.value)}
-  pattern=".{8,}"
-  title="Password must be at least 8 characters long"
-/>
+          type="password"
+          placeholder="Password"
+          required
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          pattern=".{8,}"
+          title="Password must be at least 8 characters long"
+        />
 
         <button type="submit">Sign Up</button>
       </form>
 
       <hr style={{ margin: '20px 0' }} />
 
-      <button
-        onClick={handleGoogleSignup}
-        style={{
-          backgroundColor: '#4285F4',
-          color: 'white',
-          padding: '10px',
-          border: 'none',
-          cursor: 'pointer'
-        }}
-      >
-        Sign up with Google
-      </button>
+    <button onClick={handleGoogleSignup} className="google-btn">
+  Sign up with Google
+</button>
 
-      <p>Already have an account? <a href="/login">Login</a></p>
+<p>
+  Already have an account?{' '}
+  <span onClick={() => navigate('/login')} className="nav-link">
+    Login
+  </span>
+</p>
+
     </div>
   );
 };
