@@ -81,3 +81,29 @@
 .auth-container a:hover {
   text-decoration: underline;
 }
+
+
+.auth-container .google-btn {
+  background-color: #4285F4;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  transition: background-color 0.25s ease;
+}
+
+.auth-container .google-btn:hover {
+  background-color: #3367d6;
+}
+
+
+.auth-container .nav-link {
+  color: #4285F4;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
