@@ -5,7 +5,6 @@ import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
-
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,6 +29,10 @@ const Login = () => {
     }
   };
 
+  const handleSignupRedirect = () => {
+    navigate('/signup');
+  };
+
   return (
     <div className="auth-container">
       <h2>Login</h2>
@@ -42,31 +45,31 @@ const Login = () => {
           onChange={e => setEmail(e.target.value)}
         />
         <input
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
+  type="password"
+  placeholder="Password"
+  required
+  value={password}
+  onChange={e => setPassword(e.target.value)}
+  pattern=".{8,}"
+  title="Password must be at least 8 characters long"
+/>
         <button type="submit">Login</button>
       </form>
 
       <hr style={{ margin: '20px 0' }} />
 
-      <button
-        onClick={handleGoogleLogin}
-        style={{
-          backgroundColor: '#4285F4',
-          color: 'white',
-          padding: '10px',
-          border: 'none',
-          cursor: 'pointer'
-        }}
-      >
-        Sign in with Google
-      </button>
+      <button onClick={handleGoogleLogin} className="google-btn">
+  Sign in with Google
+</button>
 
-      <p>Don't have an account? <a href="/signup">Sign up</a></p>
+<p>
+  Don't have an account?{' '}
+  <span onClick={handleSignupRedirect} className="nav-link">
+    Sign up
+  </span>
+</p>
+
+
     </div>
   );
 };
